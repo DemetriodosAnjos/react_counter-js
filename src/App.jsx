@@ -2,14 +2,18 @@ import { useState } from 'react';
 import './App.scss';
 
 export const App = () => {
-  const [count] = useState(0);
+  // --- STATE ---
+  const [count, setCount] = useState(0);
 
+  // --- HANDLERS SOLUTION ---
   const addOne = () => {
-    // write code here
+    // usa UPDATE funcional para evitar problemas ao chamar várias setState
+    setCount(c => c + 1);
   };
 
   const add100 = () => {
-    // write code here
+    // idem: incremento baseado no valor anterior
+    setCount(c => c + 100);
   };
 
   // DON'T change the code below
