@@ -2,27 +2,22 @@ import { useState } from 'react';
 import './App.scss';
 
 export const App = () => {
-  // --- STATE ---
   const [count, setCount] = useState(0);
 
-  // --- HANDLERS SOLUTION ---
-  const addOne = () => {
-    // usa UPDATE funcional para evitar problemas ao chamar várias setState
-    setCount(c => c + 1);
-  };
+  const addOne = () => setCount(prev => prev + 1);
+  const add100 = () => setCount(prev => prev + 100);
 
-  const add100 = () => {
-    // idem: incremento baseado no valor anterior
-    setCount(c => c + 100);
-  };
-
-  // DON'T change the code below
   const increase = () => {
-    if (count % 5 === 0) {
-      add100();
-    }
+    setCount(prev => {
+      let next = prev + 1; // primeiro incremento
 
-    addOne();
+      if (prev % 5 === 0) {
+        // se valor antes do clique for múltiplo de 5
+        next += 100; // adiciona +100
+      }
+
+      return next;
+    });
   };
 
   return (
