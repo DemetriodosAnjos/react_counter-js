@@ -7,16 +7,15 @@ export const App = () => {
   const addOne = () => setCount(prev => prev + 1);
   const add100 = () => setCount(prev => prev + 100);
 
+  // Increase: soma 1 e, se o valor inicial for múltiplo de 5, soma +100
   const increase = () => {
     setCount(prev => {
-      let next = prev + 1; // primeiro incremento
-
       if (prev % 5 === 0) {
-        // se valor antes do clique for múltiplo de 5
-        next += 100; // adiciona +100
+        // se o valor atual é múltiplo de 5
+        return prev + 101; // soma 1 + 100
       }
 
-      return next;
+      return prev + 1; // senão apenas soma 1
     });
   };
 
